@@ -1,0 +1,41 @@
+Sure, I'd be happy to explain each line of the Backup Script project.
+
+
+#!/bin/bash
+This line is called the shebang line, and it specifies the path to the Bash interpreter 
+that will execute the script. In this case, we're using #!/bin/bash, which is the path 
+to the Bash interpreter.
+
+
+current_date=$(date +"%Y-%m-%d_%H-%M-%S")
+This line uses the date command to get the current date and time, and stores it in the 
+current_date variable. The date format used here is %Y-%m-%d_%H-%M-%S, which specifies 
+the year, month, day, hour, minute, and second separated by underscores.
+
+
+echo "Enter the directory to back up:"
+read backup_directory
+These lines prompt the user to enter the directory to back up, and read the input into the 
+backup_directory variable.
+
+
+if [ ! -d "$backup_directory" ]; then
+    echo "Error: Directory does not exist."
+    exit 1
+fi
+This if statement checks if the specified directory exists. If the directory does not exist, 
+the script displays an error message and exits with a status code of 1.
+
+
+tar -czf "${backup_directory}_${current_date}.tar.gz" "$backup_directory"
+This line creates a compressed tarball of the specified directory's contents using the tar command. 
+The -c option specifies that we want to create an archive, the -z option specifies that we want to 
+compress the archive using gzip, and the -f option specifies the filename for the archive. We use 
+the value of the backup_directory and current_date variables to form the filename of the tarball.
+
+
+I hope this helps you understand each line of the Backup Script project!
+
+
+
+
